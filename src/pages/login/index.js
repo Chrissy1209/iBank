@@ -23,20 +23,20 @@ const label = {
 const title = {
     color: "white",
     textAlign: "center",
-    margin: "20px 0",
+    margin: "40px 0 20px 0",
     fontSize: "42px",
 }
 
 const Login = () => {
     return(
-        <Container style={app} className="d-flex justify-content-center align-items-center">
+        <Container style={app} className="d-flex justify-content-center align-items-top">
             <Row>
-                <Col>
+                <Col xs={12}>
                     <h1 style={title}>Login</h1>
-                    <Form className="w-90" xs={10}>
+                    <Form className="w-90">
                         <Form.Group style={margin} controlId="loginAccountName">
-                            <Form.Label xs={2}>帳號</Form.Label>
-                            <Form.Control xs={8} type="text" placeholder="Account Name" />
+                            <Form.Label>帳號</Form.Label>
+                            <Form.Control type="text" placeholder="Account Name" />
                         </Form.Group>
                         <Form.Group style={margin} controlId="loginPassword">
                             <Form.Label>密碼</Form.Label>
@@ -47,19 +47,20 @@ const Login = () => {
                                 <Button style={{margin: "10px 10px 10px 0"}} variant="outline-secondary" type="submit">
                                 登入</Button>
                             </Link>
-                        </Form.Group>
-                        <Form.Group style={margin} controlId="loginAccount">
                             <Link style={label} to="/Register">
                                 <Button style={{margin: "10px 10px 10px 0"}} variant="outline-secondary">
                                     註冊</Button>                    
                                 </Link>
                         </Form.Group>
-                        <Form.Group style={margin} controlId="loginAccount">
+                        {/* <Form.Group style={margin} controlId="loginAccount">
+
+                        </Form.Group> */}
+                        {/* <Form.Group style={margin} controlId="loginAccount">
                             <Link style={label} to="/Transaction">
                                 <Button style={{margin: "10px 10px 10px 0"}} variant="outline-secondary">
                                 轉帳</Button>
                             </Link>
-                        </Form.Group>
+                        </Form.Group> */}
                     </Form>
                 </Col>
             </Row>
