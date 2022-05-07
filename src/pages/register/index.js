@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container,Form,Row,Col,Button} from 'react-bootstrap';
+import { Container,Form,Row,Col,Button } from 'react-bootstrap';
 
 const Size = {
     height:'590px'

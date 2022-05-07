@@ -30,14 +30,14 @@ const App = () => {
                     </Nav.Link>
                     </Nav.Item>
                 </Nav> */}
-                <Routes>
-                    <Route path="/" element={<Home />} exact/>
-                    <Route path="/Login" element={<Login />} exact/>
-                    <Route path="/Transaction" element={<Transaction />} exact/>
-                    <Route path="/About" element={<About />} exact/>
-                    <Route path="/Register" element={<Register />} exact/>
-                    <Route path="/Account" element={<Account />} exact/>
-                </Routes>
+            <Routes>
+                <Route path="/" element={<Home />} exact/>
+                <Route path="/Login" element={<Login />} exact/>
+                <Route path="/Transaction" element={<Transaction />} exact/>
+                <Route path="/About" element={<About />} exact/>
+                <Route path="/Register" element={<Register />} exact/>
+                <Route path="/Account" element={<Account />} exact/>
+            </Routes>
             <Footer/>
         </HashRouter>    
     );

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from "axios";
-// import {Col,Card} from 'react-bootstrap';
-import {CardGroup } from 'react-bootstrap';
-import RateCard from './card';
+import { Col,Card } from 'react-bootstrap';
+import { CardGroup } from 'react-bootstrap';
+// import RateCard from './card';
 import Usd from '../image/USD.jpeg';
 
 const color = {
@@ -18,11 +18,42 @@ const cardPadding = {
     // margin: '-10px -10px -20px -10px',
     // height:'100px',
 }
-
 const Rate = () => {
+    const [countries, setContries] = useState({
+        name: ["USD","JPY","CNY"],//,"EUR","HKD","THB","GBP","KRW","AUD","NZD"
+        rate: [],//uSDTWD,jPYTWD,cNYTWD,eURTWD,hKDTWD,tHBTWD,gBPTWD,kRWTWD,aUDTWD,nZDTWD
+    })
+
+    var myHeaders = new Headers();
+    myHeaders.append("apikey", "cEGQtlsHVFmfZcilRcfZ9KAmCEhP8aaw");
+//kJ8tEGspAbAh4JOTl1ScgYfs2VAtyCL9
+//cEGQtlsHVFmfZcilRcfZ9KAmCEhP8aaw
+//
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow',
+        headers: myHeaders
+    };
+
+    fetch("https://api.apilayer.com/fixer/convert?to=TWD&from=USD&amount=1", requestOptions)
+    .then(response => response.text())
+    .then(result => {
+        console.log(result)
+        console.log(result[5])
+        // setContries({...countries, countries: {
+        //     name: ["USD","JPY","CNY"],
+        //     rate: [result[5]],
+        // }})
+        // console.log(countries)
+    })
+    .catch(error => console.log('error', error));
+ 
+
+
+
     const [uSDTWD, setUSDTWD] = useState("");
     const [jPYTWD, setJPYTWD] = useState("");
-    const [cNYTWD, setCNYTWD] = useState("");
+    // const [cNYTWD, setCNYTWD] = useState("");
     // const [eURTWD, setEURTWD] = useState("");
     // const [hKDTWD, setHKDTWD] = useState("");
     // const [tHBTWD, setTHBTWD] = useState("");
@@ -30,15 +61,15 @@ const Rate = () => {
     // const [kRWTWD, setKRWTWD] = useState("");
     // const [aUDTWD, setAUDTWD] = useState("");
     // const [nZDTWD, setNZDTWD] = useState("");
-    function getUSA(){
-        return axios.get('https://free.currconv.com/api/v7/convert?q=USD_TWD&compact=ultra&apiKey=c6b9fd7b28ff77cb1fe9');
-       }
-    function getJPY(){
-        return axios.get('https://free.currconv.com/api/v7/convert?q=JPY_TWD&compact=ultra&apiKey=c6b9fd7b28ff77cb1fe9');
-       }
-    function getCNY(){
-        return axios.get('https://free.currconv.com/api/v7/convert?q=CNY_TWD&compact=ultra&apiKey=c6b9fd7b28ff77cb1fe9');
-       }
+    // function getUSA(){
+    //     return axios.get('https://free.currconv.com/api/v7/convert?q=USD_TWD&compact=ultra&apiKey=3c59438ee0d0cdd2fc58');
+    //    }
+    // function getJPY(){
+    //     return axios.get('https://free.currconv.com/api/v7/convert?q=JPY_TWD&compact=ultra&apiKey=3c59438ee0d0cdd2fc58');
+    //    }
+    // function getCNY(){
+    //     return axios.get('https://free.currconv.com/api/v7/convert?q=CNY_TWD&compact=ultra&apiKey=c6b9fd7b28ff77cb1fe9');
+    //    }
     // function getEUR(){
     //     return axios.get('https://free.currconv.com/api/v7/convert?q=EUR_TWD&compact=ultra&apiKey=6c4e1f56bc8d2c9ea153');
     //    }
@@ -60,12 +91,15 @@ const Rate = () => {
     // function getNZD(){
     //     return axios.get('https://free.currconv.com/api/v7/convert?q=NZD_TWD&compact=ultra&apiKey=6c4e1f56bc8d2c9ea153');
     //    }
-    axios.all([getUSA(),getJPY(),getCNY()])//,getEUR(),getHKD(),getTHB(),getGBP(),getKRW(),getAUD(),getNZD()
-        .then(axios.spread(function(usa,jpy,cny){//,eur,hkd,thb,gbp,krw,aud,nzd
+    // axios.all([getUSA(),getJPY()])//,getCNY(),getEUR(),getHKD(),getTHB(),getGBP(),getKRW(),getAUD(),getNZD()
+    //     .then(axios.spread(function(usa,jpy){//,cny,eur,hkd,thb,gbp,krw,aud,nzd
          //當這兩個請求都完成的時候會觸發這個函數，兩個引數分別代表返回的結果
-         setUSDTWD(usa.data.USD_TWD);
-         setJPYTWD(jpy.data.JPY_TWD);
-         setCNYTWD(cny.data.CNY_TWD);
+        //  setUSDTWD(usa.data.USD_TWD);
+        //  setJPYTWD(jpy.data.JPY_TWD);
+        //  setCNYTWD(cny.data.CNY_TWD);
+        //  setContries(countries.rate);
+        //  setRates([usa.data.USD_TWD,jpy.data.JPY_TWD]);
+        //  console.log("rate = "+ rate);
         //  setEURTWD(eur.data.EUR_TWD);
         //  setHKDTWD(hkd.data.HKD_TWD);
         //  setTHBTWD(thb.data.THB_TWD);
@@ -73,11 +107,8 @@ const Rate = () => {
         //  setKRWTWD(krw.data.KRW_TWD);
         //  setAUDTWD(aud.data.AUD_TWD);
         //  setNZDTWD(nzd.data.NZD_TWD);
-        }))
-    const [country] =useState({
-        name: ["USD","JPY","CNY"],//,"EUR","HKD","THB","GBP","KRW","AUD","NZD"
-        rate: [uSDTWD,jPYTWD,cNYTWD],//,eURTWD,hKDTWD,tHBTWD,gBPTWD,kRWTWD,aUDTWD,nZDTWD
-    })
+        // }))
+
     // useEffect(() => {
     //     axios({
     //         method: "GET",
@@ -97,36 +128,36 @@ const Rate = () => {
 
     return (
     //     <CardGroup>
-        //     <Col xs={10} className="d-flex justify-content-center align-items-center" style={cardPadding}>
-        //         <Card style={{backgroundColor: 'rgba(255,255,255,0.4)',}} className="text-end w-100 border">
-        //             <Card.Body style={color}>
-        //                 <Card.Text className="text-center" >
-        //                         <img src={Usd} style={ImgSize}></img>
-        //                         {/* <span style={{margin:'0 15px'}}>美元</span> */}
-        //                         <span style={{margin:'0 15px'}} className="text-bottom"> 1 CNY = {cNYTWD}TWD</span> 
-        //                 </Card.Text>
-        //             </Card.Body>
-        //         </Card>         
-        //     </Col>
             // <Col xs={10} className="d-flex justify-content-center align-items-center" style={cardPadding}>
-        //         <Card style={{backgroundColor: 'rgba(255,255,255,0.4)',}} className="text-end w-100 border">
-        //             <Card.Body style={color}>
-        //                 <Card.Text className="text-center" >
-        //                         <img src={Usd} style={ImgSize}></img>
-        //                         {/* <span style={{margin:'0 15px'}}>美元</span> */}
-        //                         <span style={{margin:'0 15px'}} className="text-bottom"> 1 JPY = {jPYTWD}TWD</span> 
-        //                 </Card.Text>
-        //             </Card.Body>
-        //         </Card>         
-        //     </Col>
+            //     <Card style={{backgroundColor: 'rgba(255,255,255,0.4)',}} className="text-end w-100 border">
+            //         <Card.Body style={color}>
+            //             <Card.Text className="text-center" >
+            //                     <img src={Usd} style={ImgSize}></img>
+            //                     {/* <span style={{margin:'0 15px'}}>美元</span> */}
+            //                     <span style={{margin:'0 15px'}} className="text-bottom"> 1 CNY = {cNYTWD}TWD</span> 
+            //             </Card.Text>
+            //         </Card.Body>
+            //     </Card>         
+            // </Col>
+            <Col xs={10} className="d-flex justify-content-center align-items-center" style={cardPadding}>
+                <Card style={{backgroundColor: 'rgba(255,255,255,0.4)',}} className="text-end w-100 border">
+                    <Card.Body style={color}>
+                        <Card.Text className="text-center" >
+                            <img src={Usd} style={ImgSize}></img>
+                            {/* <span style={{margin:'0 15px'}}>美元</span> */}
+                            <span style={{margin:'0 15px'}} className="text-bottom"> 1 JPY = {jPYTWD}TWD</span> 
+                        </Card.Text>
+                    </Card.Body>
+                </Card>         
+            </Col>
     //     </CardGroup>
-        <CardGroup>
-            {
-                country.name.map((item, index) => {
-                    return <RateCard key={item} name={item} rate={country.rate[index]}/>
-                })   
-            }
-        </CardGroup>
+        // <CardGroup className='justify-content-center'>
+        //     {
+        //         countries.name.map((item, index) => {
+        //             return <RateCard key={item} name={item} rate={countries.rate[index]}/>
+        //         })   
+        //     }
+        // </CardGroup>
     );
 }
 

@@ -22,17 +22,13 @@ const Home = () => {
     return(
         <Container className="border " fluid>
             <Row className="border">
-                <Col className=" justify-content-center align-items-center" xs={12} style={carousel}>
+                <Col style={carousel} className=" justify-content-center align-items-center" xs={12}>
                     <Mycarousel/>   
                 </Col>
             </Row>
             <Row style={rate} className="border">
                 <h3 style={text}>即時匯率</h3>
                 <Rate />
-                {/* <Rate />
-                <Rate />
-                <Rate />
-                <Rate /> */}
             </Row>
         </Container>  
     ); 

@@ -21,9 +21,9 @@ const RateCard = ({ name, rate }) => {
             <Card style={{backgroundColor: 'rgba(255,255,255,0.4)',}} className="text-end w-100 border">
                 <Card.Body style={color}>
                     <Card.Text className="text-center" >
-                            <img src={Usd} style={ImgSize}></img>
-                            {/* <span style={{margin:'0 15px'}}>美元</span> */}
-                            <span style={{margin:'0 15px'}} className="text-bottom"> 1 {name} = {rate}TWD</span> 
+                        <img src={Usd} style={ImgSize}></img>
+                        {/* <span style={{margin:'0 15px'}}>美元</span> */}
+                        <span style={{margin:'0 15px'}} className="text-bottom"> 1 {name} = {rate}TWD</span> 
                     </Card.Text>
                 </Card.Body>
             </Card>          
