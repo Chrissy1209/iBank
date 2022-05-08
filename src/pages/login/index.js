@@ -27,6 +27,12 @@ const title = {
     fontSize: "42px",
 }
 
+const btn = {
+    margin: "15px 15px 10px 0",
+    color: "white",
+    borderColor: "white"
+}
+
 const Login = () => {
     return(
         <Container style={app} className="d-flex justify-content-center align-items-top">
@@ -44,23 +50,16 @@ const Login = () => {
                         </Form.Group>
                         <Form.Group style={margin} controlId="loginAccount">
                             <Link style={label} to="/Account">
-                                <Button style={{margin: "10px 10px 10px 0"}} variant="outline-secondary" type="submit">
-                                登入</Button>
+                                <Button style={btn} variant="outline-secondary" type="submit">
+                                    登入
+                                </Button>
                             </Link>
                             <Link style={label} to="/Register">
-                                <Button style={{margin: "10px 10px 10px 0"}} variant="outline-secondary">
-                                    註冊</Button>                    
-                                </Link>
-                        </Form.Group>
-                        {/* <Form.Group style={margin} controlId="loginAccount">
-
-                        </Form.Group> */}
-                        {/* <Form.Group style={margin} controlId="loginAccount">
-                            <Link style={label} to="/Transaction">
-                                <Button style={{margin: "10px 10px 10px 0"}} variant="outline-secondary">
-                                轉帳</Button>
+                                <Button style={btn} variant="outline-secondary">
+                                    註冊
+                                </Button>                    
                             </Link>
-                        </Form.Group> */}
+                        </Form.Group>
                     </Form>
                 </Col>
             </Row>

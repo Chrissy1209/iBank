@@ -9,7 +9,9 @@ const Balance = () => {
                         <Card.Text className="text-start" style={{borderBottom: "1px solid darkgray"}}>
                             帳戶餘額
                             <Link to="/Transaction">
-                                <Button variant="secondary" style={{margin:'0 0 10px 170px'}}>轉帳</Button>
+                            <Button variant="outline-secondary" style={{margin:'0 0 10px 170px'}}>
+                                轉帳
+                            </Button>
                             </Link>
                         </Card.Text>
                     </Card.Body>
