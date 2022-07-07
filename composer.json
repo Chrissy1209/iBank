@@ -1,0 +1,11 @@
+{
+    "require": {
+        "topthink/think-captcha": "2.0.*",
+        "php-quickorm/captcha": "^1.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "topthink/think-installer": true
+        }
+    }
+}
